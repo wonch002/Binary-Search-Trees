@@ -37,10 +37,10 @@ class Node:
     def print_tree(self):
         """Print binary tree to screen.
 
-        This method will use Inorder Depth First Search to do this. Luckily,
+        This method will use Inorder Traversal to do this. Luckily,
         we have already implemented this method.
         """
-        self.inorder_dfs()
+        self.inorder_traversal()
 
     def insert(self, data):
         """Insert number into binary tree.
@@ -65,10 +65,6 @@ class Node:
                 self.right = Node(data)
             else:
                 self.right.insert(data)
-
-    def check_leaf(self):
-        """Return whether node is a leaf node or not."""
-        return self.right is None and self.left is None
 
     def search(self, key):
         """Search for item in tree.
@@ -111,8 +107,8 @@ class Node:
         if self.right is not None:
             self.right.invert()
 
-    def breadth_first_search(self):
-        """Print binary tree to screen using breadth first search.
+    def breadth_first_traversal(self):
+        """Print binary tree to screen using breadth first traversal.
 
         This technique will expand the highest node levels before moving onto
         the next level of nodes.
@@ -127,21 +123,64 @@ class Node:
 
             print(node.data)
 
-    def inorder_dfs(self):
-        """Print binary tree to screen using Inorder depth first search.
+    def inorder_traversal(self):
+        """Print binary tree to screen using Inorder Traversal.
 
         This technique will expand the deepest layer nodes first before moving
         onto the higher level nodes. Once we get to a node, we will print it,
         so we don't have to back track. Note, this is the same method we use
-        to print our tree.
+        to print our tree, as it prints our data elements in order.
+
+        The basic logic here is:
+            - Traverse Left Node
+            - Print Node
+            - Traverse Right Node
         """
         if self.left:
-            self.left.inorder_dfs()
+            self.left.inorder_traversal()
 
         print(self.data)
 
         if self.right:
-            self.right.inorder_dfs()
+            self.right.inorder_traversal()
+
+    def preorder_traversal(self):
+        """Print binary tree to screen using Preorder Travesal.
+        
+        This technique will print nodes to the screen as we reach them. Once a
+        node is printed to the screen, the left and right nodes will be
+        recursively expanded.
+
+        The basic logic here is:
+            - Print Node
+            - Traverse Left Node
+            - Traverse Right Node
+        """
+        print(self.data)
+
+        if self.left:
+            self.left.preorder_traversal()
+        if self.right:
+            self.right.preorder_traversal()
+
+    def postorder_traversal(self):
+        """Print binary tree to screen using Postorder Travesal.
+
+        This method will print out the nodes at the deepest layer first. This 
+        method will also expand an entire sub-tree and all of its deepest
+        layers before moving up. 
+        
+        The basic logic here is:
+            - Traverse Left Node
+            - Traverse Right Node
+            - Print Node
+        """
+        if self.left:
+            self.left.postorder_traversal()
+        if self.right:
+            self.right.postorder_traversal()
+        
+        print(self.data)
 
 
 def initialize_bst_tree():
@@ -153,6 +192,7 @@ def initialize_bst_tree():
     root_node.insert(2)
     root_node.insert(5)
     root_node.insert(4)
+    root_node.insert(6)
 
     return root_node
 
@@ -170,10 +210,18 @@ if __name__ == '__main__':
     print()
     root_node.invert()  # Invert back to get original tree
 
-    print("Breadth First Search:")
-    root_node.breadth_first_search()
+    print("Breadth First Traversal:")
+    root_node.breadth_first_traversal()
     print()
 
-    print("Inorder Depth First Search:")
-    root_node.inorder_dfs()
+    print("Inorder Traversal:")
+    root_node.inorder_traversal()
+    print()
+
+    print("Preorder Traversal:")
+    root_node.preorder_traversal()
+    print()
+
+    print("Postorder Traversal:")
+    root_node.postorder_traversal()
     print()
