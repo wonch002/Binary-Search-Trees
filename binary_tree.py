@@ -35,14 +35,12 @@ class Node:
         self.data = data
 
     def print_tree(self):
-        """Print binary tree to screen."""
-        if self.left:
-            self.left.print_tree()
+        """Print binary tree to screen.
 
-        print(self.data)
-
-        if self.right:
-            self.right.print_tree()
+        This method will use Inorder Depth First Search to do this. Luckily,
+        we have already implemented this method.
+        """
+        self.inorder_dfs()
 
     def insert(self, data):
         """Insert number into binary tree.
@@ -129,6 +127,22 @@ class Node:
 
             print(node.data)
 
+    def inorder_dfs(self):
+        """Print binary tree to screen using Inorder depth first search.
+
+        This technique will expand the deepest layer nodes first before moving
+        onto the higher level nodes. Once we get to a node, we will print it,
+        so we don't have to back track. Note, this is the same method we use
+        to print our tree.
+        """
+        if self.left:
+            self.left.inorder_dfs()
+
+        print(self.data)
+
+        if self.right:
+            self.right.inorder_dfs()
+
 
 def initialize_bst_tree():
     """Initialize a BST tree."""
@@ -158,4 +172,8 @@ if __name__ == '__main__':
 
     print("Breadth First Search:")
     root_node.breadth_first_search()
+    print()
+
+    print("Inorder Depth First Search:")
+    root_node.inorder_dfs()
     print()
