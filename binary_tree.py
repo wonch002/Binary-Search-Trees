@@ -106,7 +106,7 @@ class Node:
             self.left.invert()
         if self.right is not None:
             self.right.invert()
-   
+
     def breadth_first_search(self):
         """Print binary tree to screen using breadth first search.
 
@@ -120,12 +120,12 @@ class Node:
                 queue.append(node.left)
             if node.right is not None:
                 queue.append(node.right)
-            
+
             print(node.data)
 
 
-if __name__ == '__main__':
-    # Test out tree
+def initialize_bst_tree():
+    """Initialize a BST tree."""
     root_node = Node(3)
     root_node.insert(12)
     root_node.insert(1)
@@ -133,8 +133,23 @@ if __name__ == '__main__':
     root_node.insert(2)
     root_node.insert(5)
     root_node.insert(4)
-    #root_node.print_tree()
-    #root_node.invert()
-    #root_node.print_tree()
-    #root_node.invert()
+
+    return root_node
+
+
+if __name__ == '__main__':
+    # Test out tree methods
+    root_node = initialize_bst_tree()
+    print("Original Tree:")
+    root_node.print_tree()
+    print()
+
+    print("Inverted Tree:")
+    root_node.invert()
+    root_node.print_tree()
+    print()
+    root_node.invert()  # Invert back to get original tree
+
+    print("Breadth First Search:")
     root_node.breadth_first_search()
+    print()
