@@ -6,6 +6,12 @@ Binary tree implementation.
 This python module will serve as a personal implementation of binary trees and
 their common algorithms.
 """
+__author__ = "Cameron Wonchoba"
+__credits__ = ["Cameron Wonchoba"]
+__version__ = "0.0.1"
+__maintainer__ = "Cameron Wonchoba"
+__email__ = "wonch002@umn.edu"
+__status__ = "Practice"
 
 
 class Node:
