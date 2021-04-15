@@ -106,6 +106,22 @@ class Node:
             self.left.invert()
         if self.right is not None:
             self.right.invert()
+   
+    def breadth_first_search(self):
+        """Print binary tree to screen using breadth first search.
+
+        This technique will expand the highest node levels before moving onto
+        the next level of nodes.
+        """
+        queue = [self]
+        while len(queue) > 0:
+            node = queue.pop(0)  # Removes first item
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+            
+            print(node.data)
 
 
 if __name__ == '__main__':
@@ -117,6 +133,8 @@ if __name__ == '__main__':
     root_node.insert(2)
     root_node.insert(5)
     root_node.insert(4)
-    root_node.print_tree()
-    root_node.invert()
-    root_node.print_tree()
+    #root_node.print_tree()
+    #root_node.invert()
+    #root_node.print_tree()
+    #root_node.invert()
+    root_node.breadth_first_search()
