@@ -146,7 +146,7 @@ class Node:
 
     def preorder_traversal(self):
         """Print binary tree to screen using Preorder Travesal.
-        
+
         This technique will print nodes to the screen as we reach them. Once a
         node is printed to the screen, the left and right nodes will be
         recursively expanded.
@@ -166,10 +166,10 @@ class Node:
     def postorder_traversal(self):
         """Print binary tree to screen using Postorder Travesal.
 
-        This method will print out the nodes at the deepest layer first. This 
+        This method will print out the nodes at the deepest layer first. This
         method will also expand an entire sub-tree and all of its deepest
-        layers before moving up. 
-        
+        layers before moving up.
+
         The basic logic here is:
             - Traverse Left Node
             - Traverse Right Node
@@ -179,7 +179,7 @@ class Node:
             self.left.postorder_traversal()
         if self.right:
             self.right.postorder_traversal()
-        
+
         print(self.data)
 
 
